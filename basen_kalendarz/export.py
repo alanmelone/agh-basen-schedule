@@ -32,7 +32,7 @@ def new_calendar(pool: str) -> Calendar:
     cal = Calendar()
     cal.add("prodid", "-//basen-kalendarz//PL")
     cal.add("version", "2.0")
-    cal.add("x-wr-calname", f"Basen {pool} — занятость")
+    cal.add("x-wr-calname", f"Basen {pool} — свободные дорожки")
     cal.add("x-wr-timezone", "Europe/Warsaw")
     return cal
 
@@ -58,14 +58,16 @@ def add_events(cal: Calendar, intervals: list[SharedInterval], pool: str,
         for iv in by_weekday.get(day.weekday(), []):
             # UID зависит только от содержания, поэтому повторный импорт того же
             # расписания обновляет события, а не создаёт дубликаты.
-            key = f"{pool}|{day}|{iv.lanes}|{iv.start_min}|{iv.end_min}"
+            key = f"{pool}|wolne|{day}|{iv.lanes}|{iv.start_min}|{iv.end_min}"
             ev = Event()
             ev.add("uid", hashlib.sha1(key.encode()).hexdigest() + "@basen-kalendarz")
             ev.add("dtstamp", stamp)
             ev.add("dtstart", _at(day, iv.start_min))
             ev.add("dtend", _at(day, iv.end_min))
-            ev.add("summary", f"{pool.capitalize()} · {fmt_lanes(iv.lanes)}")
-            ev.add("transp", "OPAQUE")
+            free = "свободна" if len(iv.lanes) == 1 else "свободны"
+            ev.add("summary", f"{pool.capitalize()} · {free} {fmt_lanes(iv.lanes)}")
+            # свободная дорожка — справка, а не встреча: не помечает время как занятое
+            ev.add("transp", "TRANSPARENT")
             cal.add_component(ev)
         day += timedelta(days=1)
     return covered

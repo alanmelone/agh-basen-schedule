@@ -1,4 +1,4 @@
-"""Склейка занятых слотов каждой дорожки в интервалы."""
+"""Склейка свободных слотов каждой дорожки в интервалы."""
 
 from dataclasses import dataclass
 
@@ -24,7 +24,7 @@ def _runs(mask: np.ndarray) -> list[tuple[int, int]]:
 
 @dataclass
 class SharedInterval:
-    """Одинаковый отрезок времени, занятый на нескольких дорожках."""
+    """Одинаковый отрезок времени, свободный на нескольких дорожках."""
     day: int
     start_min: int
     end_min: int
@@ -57,14 +57,14 @@ def fmt_lanes(lanes: list[int]) -> str:
     return ("дорожка " if len(lanes) == 1 else "дорожки ") + ", ".join(parts)
 
 
-def lane_intervals(busy: np.ndarray) -> list[LaneInterval]:
-    """Интервалы занятости по дорожкам; busy — матрица [день, дорожка, слот] из occupancy()."""
+def free_intervals(busy: np.ndarray) -> list[LaneInterval]:
+    """Свободные интервалы по дорожкам; busy — матрица [день, дорожка, слот] из occupancy()."""
     t = SLOT_BOUNDS_MIN
     return [
         LaneInterval(day=day, lane=lane + 1, start_min=t[s0], end_min=t[s1])
         for day, day_busy in enumerate(busy)
         for lane, lane_busy in enumerate(day_busy)
-        for s0, s1 in _runs(lane_busy)
+        for s0, s1 in _runs(~lane_busy)
     ]
 
 

@@ -10,7 +10,7 @@ from pathlib import Path
 
 import cv2
 
-from .events import fmt_lanes, fmt_time, lane_intervals, merge_same_time
+from .events import free_intervals, fmt_lanes, fmt_time, merge_same_time
 from .export import build_calendar, write_ics, write_json
 from .grid import DAYS, POOLS, GridError, detect_grid
 from .occupancy import occupancy
@@ -44,7 +44,7 @@ def main(argv: list[str] | None = None) -> int:
 
     lanes = POOLS[args.basen]
     busy = occupancy(img, grid, lanes)
-    intervals = merge_same_time(lane_intervals(busy))
+    intervals = merge_same_time(free_intervals(busy))
 
     args.out.mkdir(parents=True, exist_ok=True)
     write_json(intervals, args.out / "events.json")

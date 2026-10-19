@@ -58,8 +58,8 @@ def test_weeks_roundtrip_and_feed(tmp_path):
     events = build_feed(weeks, "sportowy").walk("VEVENT")
     by_day = {ev.decoded("dtstart").date(): str(ev["SUMMARY"]) for ev in events}
     assert len(events) == len(by_day) == 14              # 12–25.10, по событию в день, без дублей
-    assert by_day[date(2026, 10, 16)] == "Sportowy · дорожка 1"
-    assert by_day[date(2026, 10, 17)] == "Sportowy · дорожка 3"
-    assert by_day[date(2026, 10, 18)] == "Sportowy · дорожка 3"
-    assert by_day[date(2026, 10, 20)] == "Sportowy · дорожка 2"
-    assert by_day[date(2026, 10, 21)] == "Sportowy · дорожка 2"
+    assert by_day[date(2026, 10, 16)] == "Sportowy · свободна дорожка 1"
+    assert by_day[date(2026, 10, 17)] == "Sportowy · свободна дорожка 3"
+    assert by_day[date(2026, 10, 18)] == "Sportowy · свободна дорожка 3"
+    assert by_day[date(2026, 10, 20)] == "Sportowy · свободна дорожка 2"
+    assert by_day[date(2026, 10, 21)] == "Sportowy · свободна дорожка 2"

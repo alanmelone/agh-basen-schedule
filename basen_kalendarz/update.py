@@ -11,7 +11,7 @@ from pathlib import Path
 
 import cv2
 
-from .events import fmt_lanes, fmt_time, lane_intervals, merge_same_time
+from .events import free_intervals, fmt_lanes, fmt_time, merge_same_time
 from .export import write_ics
 from .fetch import PAGE_URL, FetchError, fetch_schedule
 from .grid import DAYS, POOLS, GridError, detect_grid
@@ -43,12 +43,12 @@ def _index_html(pool: str, weeks: list[Week], ics_name: str) -> str:
 </style>
 </head>
 <body>
-<h1>Basen {pool} — занятость дорожек</h1>
+<h1>Basen {pool} — свободные дорожки</h1>
 <p>Календарь: <a href="{ics_name}"><code id="url">{ics_name}</code></a></p>
 <p>Proton Calendar: «+» рядом с календарями → <i>Add calendar from URL</i> → вставить эту ссылку.</p>
 <p>Последнее расписание: <b>{html.escape(latest.title)}</b>, загружено {latest.fetched_at}
    (<a href="{html.escape(latest.image_url)}">исходная картинка</a>).</p>
-<p>Распознанные занятые ячейки отмечены крестиками:</p>
+<p>Распознанные занятые ячейки отмечены крестиками, всё остальное считается свободным:</p>
 <p><a href="podglad.webp"><img src="podglad.webp" alt="Превью распознавания"></a></p>
 <h2>Недели в календаре</h2>
 <ul>
@@ -81,7 +81,7 @@ def main(argv: list[str] | None = None) -> int:
 
     lanes = POOLS[args.basen]
     busy = occupancy(schedule.image, grid, lanes)
-    intervals = merge_same_time(lane_intervals(busy))
+    intervals = merge_same_time(free_intervals(busy))
     week = Week(
         date_from=schedule.date_from,
         date_to=schedule.date_to,
