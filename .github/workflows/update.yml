@@ -1,0 +1,66 @@
+name: Обновление календаря
+
+on:
+  schedule:
+    # По понедельникам (время в UTC). Второй запуск — на случай, если утром
+    # на сайте ещё висит расписание прошлой недели.
+    - cron: "0 5 * * 1"
+    - cron: "0 15 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write     # коммит архива недель в data/weeks
+  pages: write
+  id-token: write
+
+concurrency:
+  group: update-calendar
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Тесты
+        run: python -m pytest -q
+
+      - name: Скачать и распознать расписание
+        run: python -m basen_kalendarz.update --weeks data/weeks --site site --work work
+
+      - name: Сохранить неделю в архиве
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add data/weeks
+          if ! git diff --cached --quiet; then
+            git commit -m "Расписание: $(git diff --cached --name-only | xargs -n1 basename | tr '\n' ' ')"
+            git push
+          fi
+
+      - name: Картинка и превью этого запуска
+        uses: actions/upload-artifact@v4
+        with:
+          name: work
+          path: work/
+          retention-days: 90
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+      - id: deploy
+        uses: actions/deploy-pages@v4
