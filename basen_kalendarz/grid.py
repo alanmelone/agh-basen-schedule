@@ -76,7 +76,8 @@ def _peaks(profile: np.ndarray, threshold: float) -> list[int]:
 
 def _day_separators(gray: np.ndarray) -> list[int]:
     """Сплошные тёмные линии на всю ширину — границы дней (верх каждого дня + низ последнего)."""
-    full = np.flatnonzero((gray < 100).mean(axis=1) > 0.9)
+    # Линии почти чёрные; насыщенный красный блок на весь день в сером даёт ~60–80.
+    full = np.flatnonzero((gray < 40).mean(axis=1) > 0.9)
     seps: list[int] = []
     for y in full:
         if not seps or y - seps[-1] > 2:
