@@ -1,0 +1,299 @@
+{
+ "date_from": "2026-10-26",
+ "date_to": "2026-11-01",
+ "pool": "sportowy",
+ "title": "Rezerwacje pływalni w dniach 26.10-01.11.26 r.",
+ "image_url": "https://basen.agh.edu.pl/home/_processed_/4/f/csm_24.10_b6ced9ad17.webp",
+ "fetched_at": "2026-10-26 20:01 UTC",
+ "intervals": [
+  {
+   "day": 0,
+   "start_min": 420,
+   "end_min": 480,
+   "lanes": [
+    4
+   ]
+  },
+  {
+   "day": 0,
+   "start_min": 450,
+   "end_min": 480,
+   "lanes": [
+    1,
+    2,
+    3,
+    5,
+    6
+   ]
+  },
+  {
+   "day": 0,
+   "start_min": 975,
+   "end_min": 1020,
+   "lanes": [
+    3,
+    4
+   ]
+  },
+  {
+   "day": 0,
+   "start_min": 975,
+   "end_min": 1340,
+   "lanes": [
+    5,
+    6
+   ]
+  },
+  {
+   "day": 0,
+   "start_min": 1110,
+   "end_min": 1340,
+   "lanes": [
+    2
+   ]
+  },
+  {
+   "day": 0,
+   "start_min": 1125,
+   "end_min": 1340,
+   "lanes": [
+    3,
+    4
+   ]
+  },
+  {
+   "day": 0,
+   "start_min": 1290,
+   "end_min": 1340,
+   "lanes": [
+    1
+   ]
+  },
+  {
+   "day": 1,
+   "start_min": 420,
+   "end_min": 570,
+   "lanes": [
+    4
+   ]
+  },
+  {
+   "day": 1,
+   "start_min": 450,
+   "end_min": 570,
+   "lanes": [
+    1,
+    2,
+    3,
+    5,
+    6
+   ]
+  },
+  {
+   "day": 1,
+   "start_min": 1065,
+   "end_min": 1340,
+   "lanes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "day": 2,
+   "start_min": 360,
+   "end_min": 1340,
+   "lanes": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "day": 2,
+   "start_min": 450,
+   "end_min": 975,
+   "lanes": [
+    1
+   ]
+  },
+  {
+   "day": 2,
+   "start_min": 450,
+   "end_min": 1020,
+   "lanes": [
+    2,
+    3
+   ]
+  },
+  {
+   "day": 2,
+   "start_min": 1080,
+   "end_min": 1340,
+   "lanes": [
+    2,
+    3
+   ]
+  },
+  {
+   "day": 2,
+   "start_min": 1110,
+   "end_min": 1340,
+   "lanes": [
+    1
+   ]
+  },
+  {
+   "day": 3,
+   "start_min": 420,
+   "end_min": 480,
+   "lanes": [
+    4
+   ]
+  },
+  {
+   "day": 3,
+   "start_min": 450,
+   "end_min": 480,
+   "lanes": [
+    1,
+    2,
+    3,
+    5,
+    6
+   ]
+  },
+  {
+   "day": 3,
+   "start_min": 795,
+   "end_min": 1065,
+   "lanes": [
+    1
+   ]
+  },
+  {
+   "day": 3,
+   "start_min": 795,
+   "end_min": 1110,
+   "lanes": [
+    2
+   ]
+  },
+  {
+   "day": 3,
+   "start_min": 795,
+   "end_min": 1340,
+   "lanes": [
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "day": 3,
+   "start_min": 1155,
+   "end_min": 1340,
+   "lanes": [
+    1,
+    2
+   ]
+  },
+  {
+   "day": 4,
+   "start_min": 360,
+   "end_min": 480,
+   "lanes": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "day": 4,
+   "start_min": 450,
+   "end_min": 480,
+   "lanes": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "day": 4,
+   "start_min": 750,
+   "end_min": 1065,
+   "lanes": [
+    1,
+    2
+   ]
+  },
+  {
+   "day": 4,
+   "start_min": 750,
+   "end_min": 1340,
+   "lanes": [
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "day": 4,
+   "start_min": 1110,
+   "end_min": 1340,
+   "lanes": [
+    1,
+    2
+   ]
+  },
+  {
+   "day": 5,
+   "start_min": 360,
+   "end_min": 1340,
+   "lanes": [
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "day": 5,
+   "start_min": 450,
+   "end_min": 675,
+   "lanes": [
+    1
+   ]
+  },
+  {
+   "day": 5,
+   "start_min": 450,
+   "end_min": 720,
+   "lanes": [
+    2,
+    3
+   ]
+  },
+  {
+   "day": 5,
+   "start_min": 765,
+   "end_min": 1340,
+   "lanes": [
+    2,
+    3
+   ]
+  },
+  {
+   "day": 5,
+   "start_min": 810,
+   "end_min": 1340,
+   "lanes": [
+    1
+   ]
+  }
+ ]
+}
