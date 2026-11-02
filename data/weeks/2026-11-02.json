@@ -3,8 +3,8 @@
  "date_to": "2026-11-08",
  "pool": "sportowy",
  "title": "Rezerwacje pływalni w dniach 2.11-08.11.26 r.",
- "image_url": "https://basen.agh.edu.pl/home/_processed_/0/3/csm_02-08.11.26_071fd075b2.webp",
- "fetched_at": "2026-11-02 13:14 UTC",
+ "image_url": "https://basen.agh.edu.pl/home/_processed_/5/1/csm_MP_797feaba1c.webp",
+ "fetched_at": "2026-11-02 22:59 UTC",
  "intervals": [
   {
    "day": 0,
@@ -180,7 +180,7 @@
   {
    "day": 3,
    "start_min": 795,
-   "end_min": 1065,
+   "end_min": 1020,
    "lanes": [
     1
    ]
